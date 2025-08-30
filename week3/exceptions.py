@@ -11,6 +11,9 @@ def main():
     spacecraft = input("Enter a spacecraft: ")
     try:
         au = float(distances[spacecraft])
+    except KeyError:
+        print(f"'{spacecraft}' is not in the dictionary.")
+        return
     except ValueError:
         print(f"Can't convert '{distances[spacecraft]}' to a float.")
         return
