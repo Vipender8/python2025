@@ -9,7 +9,12 @@ distances = {
 
 def main():
     spacecraft = input("Enter a spacecraft: ")
-    au = float(distances[spacecraft])
+    try:
+        au = float(distances[spacecraft])
+    except ValueError:
+        print(f"Can't convert '{distances[spacecraft]}' to a float.")
+        return
+
     m = convert(au)
     print(f"{m} m")
 
