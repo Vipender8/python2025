@@ -4,7 +4,9 @@ def main():
 
 
 def get_pace(miles, minutes):
-    return minutes / miles
 
+    if not minutes > 0:
+        raise ValueError()
+    return minutes / miles
 
 main()
