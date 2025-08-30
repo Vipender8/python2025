@@ -1,3 +1,4 @@
+"""
 import string
 def main():
     plate = input("Plate: ")
@@ -11,7 +12,8 @@ def is_valid(s):
     if check_first_two_char(s):
         if check_length(s):
             if is_clean(s):
-                return True
+                if check_digit(s):
+                    return True
 
 
 def check_first_two_char(s):
@@ -33,6 +35,51 @@ def is_clean(s):
             return False
 
     return True
+
+#To check if there are numbers in between plate.
+def check_digit(s):
+    i = 0
+    for char in s:
+        if char.isdigit():
+            index = i
+            break
+        else:
+            i += 1
+    if s[index:].isdigit():
+        return True
+    
+
 main()
-"""There is one isssue with this code. 
-Numbers cannot be used in the middle of a plate; they must come at the end. For example, AAA222 would be an acceptable … vanity plate; AAA22A would not be acceptable"""
+"""
+#getting a tarceback error when plate is having only alphabets eg "Hello"
+#reason: when there is no digit in the string, index variable is not getting assigned any value and hence it is throwing an error.
+
+
+#Easy fix:
+def check_digit(s):
+    i = 0
+    found_digit = False
+    for char in s:
+        if char.isdigit():
+            index = i
+            found_digit = True
+            break
+        else:
+            i += 1
+    if found_digit:
+        return print(index)
+    else:
+        return print("No digit found")
+check_digit("Hello1") 
+
+        #This version works because you added the found_digit flag, which prevents the code from trying to access index when no digit was found.
+
+"""
+pythonic way:
+def check_digit(s):
+    for i, char in enumerate(s):        
+        if char.isdigit():
+            return s[i:].isdigit()  
+    return True
+
+"""
