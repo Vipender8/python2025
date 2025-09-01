@@ -1,4 +1,3 @@
-"""
 import string
 def main():
     plate = input("Plate: ")
@@ -74,12 +73,11 @@ check_digit("Hello1")
 
         #This version works because you added the found_digit flag, which prevents the code from trying to access index when no digit was found.
 
-"""
+
 pythonic way:
 def check_digit(s):
     for i, char in enumerate(s):        
         if char.isdigit():
             return s[i:].isdigit()  
     return True
-
 """
