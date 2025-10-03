@@ -81,3 +81,47 @@ def check_digit(s):
             return s[i:].isdigit()  
     return True
 """
+
+
+#Problem 4
+"""
+def main():
+    plate_number = input("Plate: ")
+    if is_valid(plate_number):
+        print("Valid")
+    else:
+        print("Invalid")
+
+def is_valid(s):
+    if not 2 <= len(s) <= 6:
+        return False
+
+    if not s[:2].isalpha():
+        return False
+
+    if not s.isalnum():
+        return False
+
+    return check_number_inbetween(s)
+
+index = None # If the plate has no digits at all (like "CS"), this loop never runs the break.
+             #That means index is never defined. When you later do user_input[index:], you’ll get an UnboundLocalError.
+def check_number_inbetween(user_input):
+    for i, char in enumerate(user_input):
+        if char.isdigit():
+            index = i
+            break
+
+    if index is None:
+        return True
+
+    if not user_input[index:].isdigit():
+        return False
+
+    if user_input[index] == "0":
+        return False
+
+    return True
+
+main()
+"""
